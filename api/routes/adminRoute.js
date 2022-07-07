@@ -7,3 +7,5 @@ route.post('/register' , AdminController.registerAdmin);
 route.put('/update' , AdminController.updateAdmin);
 route.delete('/delete' , AdminController.deleteAdmin);
 route.post('/login' , AdminController.loginAdmin);
+
+module.exports=route;
