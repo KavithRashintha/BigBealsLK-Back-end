@@ -59,6 +59,18 @@ const deleteAdmin=(req,resp)=>{
     })
 }
 
+const getAdmin=(req,resp)=>{
+    AdminSchema.findOne({fullName:req.headers.fullName}).then(resultData=>{
+        if(resultData!=null){
+            resp.status(201).json({message : resultData});
+        }else{
+            resp.status(404).json({message : 'Admin Not Found !'});
+        }
+    }).catch(resultDataError=>{
+        resp.status(501).json({message : 'Internal Server Error !'});
+    })
+}
+
 const loginAdmin=(req,resp)=>{
     AdminSchema.findOne({fullName:req.body.fullName}).then(resultData=>{
         if(resultData){
@@ -85,5 +97,5 @@ const loginAdmin=(req,resp)=>{
 }
 
 module.exports={
-    registerAdmin , updateAdmin , deleteAdmin , loginAdmin
+    registerAdmin , updateAdmin , deleteAdmin , getAdmin , loginAdmin
 }
