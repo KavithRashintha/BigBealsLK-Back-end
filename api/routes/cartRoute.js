@@ -4,6 +4,7 @@ const CartController=require('../controllers/cartController');
 const route=express.Router();
 
 route.post('/add' , CartController.addToCart);
-route.delete('/delete' , CartController.deleteItem);
+route.get('/get' , CartController.getItem);
+route.delete('/deleteAll' , CartController.deleteItems);
 
 module.exports=route;
